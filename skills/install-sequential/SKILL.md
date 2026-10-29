@@ -27,13 +27,23 @@ curl -sS -X POST https://api.usesequential.com/api/agent/provision \
 
 The trial's key works only with the Sequential SDK on a website, and with the PostHog SDK in an iOS, Android or React Native app (Sequential speaks PostHog's mobile protocol). To keep a website's existing PostHog, Mixpanel, Amplitude, Pendo or Smartlook SDK instead, the person claims the trial first and then copies that source's key on Settings › Setup (https://www.usesequential.com/docs/install.md).
 
-**Website.** Add `install.snippet` to the `<head>` of every page, once:
+**Website.** Add both parts below to the `<head>` of every page, once, with the trial's `ingest_key`. (`install.snippet` in the trial answer is the second part only: keep the inline part too.)
 
 ```html
-<script src="https://cdn.usesequential.com/sdk/sequential/v1/sequential.js" data-key="<ingest_key>" data-api="https://api.usesequential.com"></script>
+<!-- Sequential · analytics and session replay -->
+<script>
+(function(w){if(w.sequential)return;var q=[],s=w.sequential={_q:q},
+m=['capture','identify','account','register','unregister','reset','optOut','optIn','captureException'];
+for(var i=0;i<m.length;i++)(function(n){s[n]=function(){q.push([n,arguments])}})(m[i]);
+s.flush=function(){q.push(['flush',arguments]);return typeof Promise=='function'?Promise.resolve():{then:function(f){if(f)f()}}}})(window);
+</script>
+<script async src="https://cdn.usesequential.com/sdk/sequential/v1/sequential.js"
+        data-key="<ingest_key>"
+        data-api="https://api.usesequential.com"></script>
 ```
 
-- One root layout (Next.js `app/layout.tsx`, a SvelteKit or Nuxt app shell, a Vite `index.html`): add it there. In Next.js, use `next/script` with `strategy="afterInteractive"` and the same attributes.
+- The inline part defines `window.sequential` at once and queues calls until the SDK arrives, so `sequential.identify(…)` or `sequential.capture(…)` never throws, also when a blocker stops the file.
+- One HTML shell or root layout (a Vite `index.html`, a SvelteKit `app.html`, Next.js `app/layout.tsx` in `<head>`): add it there, once.
 - A bundled app that prefers a package: `npm install @usesequential/browser`, then call `init({ key: '<ingest_key>', api: 'https://api.usesequential.com' })` once in the browser.
 - Page views, clicks, forms and session replay are recorded without more code. Docs: https://www.usesequential.com/docs/sequential.md
 
