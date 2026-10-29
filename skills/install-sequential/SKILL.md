@@ -27,7 +27,7 @@ curl -sS -X POST https://api.usesequential.com/api/agent/provision \
 
 The trial's key works only with the Sequential SDK on a website, and with the PostHog SDK in an iOS, Android or React Native app (Sequential speaks PostHog's mobile protocol). To keep a website's existing PostHog, Mixpanel, Amplitude, Pendo or Smartlook SDK instead, the person claims the trial first and then copies that source's key on Settings › Setup (https://www.usesequential.com/docs/install.md).
 
-**Website.** Add both parts below to the `<head>` of every page, once, with the trial's `ingest_key`. (`install.snippet` in the trial answer is the second part only: keep the inline part too.)
+**Website.** Paste `install.snippet` from the trial answer as is, once, in the `<head>` of every page: it has both parts, the small inline script and the tag. With a key from Settings › Setup, it looks like this:
 
 ```html
 <!-- Sequential · analytics and session replay -->
