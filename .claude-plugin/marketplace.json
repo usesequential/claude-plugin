@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "usesequential",
+  "description": "Sequential's plugin for Claude Code: install session replay and analytics, and read your users' sessions over MCP.",
+  "owner": { "name": "Sequential", "email": "hello@usesequential.com" },
+  "plugins": [
+    {
+      "name": "sequential",
+      "description": "Add Sequential session replay and product analytics to a website or a mobile app, then read sessions, findings and analytics over MCP.",
+      "source": "./",
+      "category": "monitoring",
+      "homepage": "https://www.usesequential.com"
+    }
+  ]
+}

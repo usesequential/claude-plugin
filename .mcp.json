@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sequential": {
+      "type": "http",
+      "url": "https://api.usesequential.com/mcp"
+    }
+  }
+}

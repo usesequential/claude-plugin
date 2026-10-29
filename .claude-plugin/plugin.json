@@ -1,0 +1,25 @@
+{
+  "name": "sequential",
+  "description": "Add Sequential session replay and product analytics to a website or a mobile app with no account first (a trial your agent creates in one call), then read what happened to your users: findings, sessions, verdicts, errors, funnels and retention.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Sequential",
+    "email": "hello@usesequential.com",
+    "url": "https://www.usesequential.com"
+  },
+  "homepage": "https://www.usesequential.com/docs/agent-trial",
+  "repository": "https://github.com/usesequential/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "session-replay",
+    "product-analytics",
+    "analytics",
+    "heatmaps",
+    "mcp",
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "privacyPolicyUrl": "https://www.usesequential.com/privacy",
+  "icon": ".claude-plugin/icon.png"
+}
