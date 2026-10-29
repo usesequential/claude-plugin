@@ -47,6 +47,7 @@ The trial's key works only with the Sequential SDK on a website, and with the Po
 
 - **Website trial:** until the person claims it, it accepts events only from `localhost`, `*.localhost`, `127.0.0.1` and `[::1]`. Run the site locally and open a few pages. Requests to a deployed site get 403 `trial_origin_locked` until the claim.
 - **Mobile trial:** it accepts events from any build. Recording starts after the claim.
+- Sequential rejects headless and automated browsers (Playwright, Puppeteer and similar) as bots, so a test run that way sends nothing. Open the pages in a normal browser, or ask the person to.
 - If you cannot run the app yourself, ask the person to open it and click through a few screens.
 - To look at the first sessions before the claim, use `mcp.url` with `mcp.token` from the trial answer (Bearer token). It reads the trial project only and expires 3 days after setup.
 
